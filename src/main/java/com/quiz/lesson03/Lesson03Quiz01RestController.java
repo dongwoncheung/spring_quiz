@@ -24,21 +24,22 @@ public class Lesson03Quiz01RestController {
 		
 		return realEstateBO.getRealEstateById(id); // response body => json
 	}
-	
 	// 요청 URL: http://localhost:8080/lesson03/quiz01/2?rent_price=90
-	@RequestMapping("/2")
-	public List<RealEstate> quiz01_2(
-			@RequestParam("rent_price") int rentPrice) {
-		return realEstateBO.getRealEstateListByRentPrice(rentPrice);
-	}
+		@RequestMapping("/2")
+		public List<RealEstate> quiz01_2(
+				@RequestParam("rent_price") int rentPrice) {
+			
+			return realEstateBO.getRealEstateListByRentPrice(rentPrice);
+		}
 	//요청url:http://localhost/lesson03/quiz01/3?area=90&price=130000
 	@RequestMapping("/3")
-	public List<RealEstate> quiz01_3(
+	public List<RealEstate>quiz01_3(
 			@RequestParam(value="area") int area,
-			@RequestParam("price") int price) {
-		
+			@RequestParam("price")int price){
 		return realEstateBO.getRealEstateListByAreaPrice(area, price);
 	}
+		
+
 	
 
 

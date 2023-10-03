@@ -2,11 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
-<mapper namespace="com.quiz.lesson03.mapper.RealEstateMapper">
-	<select id="selectRealEstateById" parameterType="int" 
-	resultType="com.quiz.lesson03.domain.RealEstate">
-		SELECT
-			`id`
+ <mapper namespace="com.quiz.lesson03.mapper.RealEstateMapper">
+ 	<select id="selectRealEstateById" resultType="com.quiz.lesson03.domain.RealEstate" parameterType="int">
+ 		SELECT	
+ 			`id`
 			,`realtorId`
 			,`address`
 			,`area`
@@ -17,11 +16,11 @@
 			,`updatedAt`
 		FROM
 			`real_estate`
-		WHERE
+		WHERE 
 			`id` = #{id}
-	</select>
-	
-	<select id="selectRealEstateListByRentPrice" 
+ 	</select>
+ 	
+ 	<select id="selectRealEstateListByRentPrice" 
 	parameterType="map" resultType="com.quiz.lesson03.domain.RealEstate">
 		SELECT
 			`id`
@@ -40,9 +39,8 @@
 			`rentPrice` < #{rentPrice1}
 			]]>
 	</select>
-	
-	<select id="selectRealEstateByAreaPrice" 
-	parameterType="map" resultType="com.quiz.lesson03.domain.RealEstate">
+	<select id="selectRealEstateListByAreaPrice" parameterType="map"
+	resultType="com.quiz.lesson03.domain.RealEstate">
 		SELECT
 			`id`
 			,`realtorId`
@@ -56,13 +54,75 @@
 		FROM
 			`real_estate`
 		WHERE
-		<![CDATA[
-			`type` = '매매' 
-			 AND  `area` >= #{area} 
-			 AND  `price`<= #{price}
+			<![CDATA[
+			`type` = '매매'
+			AND `area` >= #{area}	
+			AND `price` <= #{price}
 			]]>
 			ORDER BY `id`DESC
 	</select>
-	
-	
-</mapper>
+	<insert id="insertRealEstate" parameterType="com.quiz.lesson03.domain.RealEstate">
+		INSERT INTO `real_estate`
+		(
+			`realtorId`
+			,`address`
+			,`area`
+			,`type`
+			,`price`
+			,`rentPrice`
+			,`createdAt`
+			,`updatedAt`
+		)
+		VALUES
+		(
+			#{realtorId}
+			, #{address}
+			, #{area}
+			, #{type}
+			, #{price}
+			, #{rentPrice}
+			, NOW()
+			, NOW()
+		)
+	</insert>
+	<insert id="insertRealEstateAsField" parameterType="com.quiz.lesson03.domain.RealEstate">
+		INSERT INTO `real_estate`
+		(
+			`realtorId`
+			,`address`
+			,`area`
+			,`type`
+			,`price`
+			,`rentPrice`
+			,`createdAt`
+			,`updatedAt`
+		)
+		VALUES
+		(
+			#{realtorId}
+			,#{address}
+			,#{area}
+			,#{type}
+			,#{price}
+			,#{rentPrice}
+			,NOW()
+			,NOW()
+		)
+	</insert>
+	<update id="updateRealEstateById" parameterType="map">
+		UPDATE`real_estate`
+		SET
+			`price` = #{price}
+			,`type` = #{type}
+			,`updatedAt` = NOW()
+		WHERE
+			`id` = #{id}
+	</update>
+	<delte id="deleteRealEstateById" parameterType="map">
+		DELETE
+		FROM
+			`real_estate`
+		WHERE
+			`id` = #{id}
+	</delte>
+ </mapper>
