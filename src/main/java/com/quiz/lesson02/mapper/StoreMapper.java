@@ -8,9 +8,7 @@ import com.quiz.lesson02.domain.Store;
 
 @Repository
 public interface StoreMapper {
-
-	//input: x
-	//output:List<Store>
-	
+	//input:x
+	//ouput:List<Store>
 	public List<Store> selectStoreList();
 	}

@@ -10,9 +10,10 @@ import com.quiz.lesson02.mapper.StoreMapper;
 
 @Service
 public class StoreBo {
-	@Autowired// spring bean(객체)을 가져오는것(Dependency Injection ->DI)
-	private StoreMapper storeMapper;//DI
-	public List<Store> getStoreList(){// input
-		return storeMapper.selectStoreList();// output
+	@Autowired
+	private StoreMapper storeMapper;
+	public List<Store> getStoreList(){
+		return storeMapper.selectStoreList();
 	}
+
 }

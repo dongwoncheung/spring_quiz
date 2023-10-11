@@ -6,28 +6,27 @@ import org.springframework.stereotype.Service;
 import com.quiz.lesson04.domain.Seller;
 import com.quiz.lesson04.mapper.SellerMapper;
 
-@Service
+@Service// springbean으로 등록을 하기 위한 절차
 public class SellerBO {
-
 	@Autowired
 	private SellerMapper sellerMapper;
-	
-	// input: 3개 파라미터
-	// output: X
+	//input: 3개의 parameter
+	//output: x
 	public void addSeller(String nickname, String profileImageUrl, Double temperature) {
 		sellerMapper.insertSeller(nickname, profileImageUrl, temperature);
 	}
-	
-	// input: X
-	// output: Seller(최신 가입자 1명)
+
+	//input:x
+	//output: seller(최신가입자 1명)
 	public Seller getLatestSeller() {
-		return sellerMapper.selectLatestSeller();
+		return sellerMapper.selectLastestSeller();
 	}
-	
+
 	// input: id
 	// output: Seller
 	public Seller getSellerById(int id) {
 		return sellerMapper.selectSellerById(id);
 	}
+
 	
 }
