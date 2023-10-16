@@ -133,12 +133,8 @@
 	
 	<script>
 		// ready: DOM tree가 완성된 후 불려지는 함수
-		//ready: dom tree가 완성된 후 불려지는 함수 /jquery함수 다시 보기
 		$(document).ready(function() {
 			$("#date").datepicker({
 				dateFormat:"yy-mm-dd" // 날짜 포맷
 			});
 		});
-	</script>
-</body>
-</html>

@@ -9,13 +9,14 @@ import com.quiz.weather_history.domain.WeatherHistory;
 
 @Repository
 public interface WeatherHistoryMapper {
-	public  List<WeatherHistory> selectWeatherHistoryList();
+
+	public List<WeatherHistory> selectWeatherHistoryList();
 	
 	public void insertWeatherHistory(
-			@Param("date") String date,
-			@Param("weather") String weather,
+			@Param("date") String date, 
+			@Param("weather") String weather, 
 			@Param("microDust") String microDust,
-			@Param("temperatures") double temperatures,
+			@Param("temperatures") double temperatures, 
 			@Param("precipitation") double precipitation,
 			@Param("windSpeed") double windSpeed);
 }
