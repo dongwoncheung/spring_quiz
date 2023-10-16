@@ -14,17 +14,13 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
             crossorigin="anonymous"></script>
-    <style>
-        .vip { color: red; }
-        .gold { color: yellow; }
-        .high-points { color: blue; }
-    </style>
+
     <title>멤버쉽</title>
 </head>
 <body>
 <div class="container">
     <h1>멤버쉽</h1>
-    <table class="table">
+    <table class="table text-center">
         <thead>
         <tr>
             <th>이름</th>
@@ -34,23 +30,32 @@
         </tr>
         </thead>
         <tbody>
-            <c:forEach items="${membership}" var="membership">
+            <c:forEach items="${membership}" var="member">
                 <tr>
-                    <td>${membership.name}</td>
-                    <td>${membership.phoneNumber}</td>
+                    <td>${member.name}</td>
+                    <td>${member.phoneNumber}</td>
                     <td>
                     	<c:choose>
-                    		<c:when test="${membership.grade == 'VIP'}">vip</c:when>
-                    		<c:when test="${member.grade == 'GOLD'}">gold</c:when>
+                    		<c:when test="${member.grade == 'VIP'}">
+                    			<span class="text-danger">${member.grade}</span>
+                    		</c:when>
+                    		<c:when test="${member.grade == 'GOLD' }">
+                    			<span class="text-warning">${member.grade}</span>
+                    		</c:when>
+                    		<c:otherwise>
+                    			${member.grade}
+                    		</c:otherwise>
                     	</c:choose>
-                    	${member.grade}
-                    
                     </td>
                     <td>
                     	<c:choose>
-                    		<c:when test="${membership.point >= 5000}">high-points</c:when>
+                    		<c:when test="${member.point >= 5000}">
+                    			<span class="text-primary">${member.point}</span>
+                    		</c:when>
+                    		<c:otherwise>
+								${member.point}P
+	                    	</c:otherwise>
                     	</c:choose>
-                    	${member.point}
                     </td>
                 </tr>
             </c:forEach>

@@ -19,7 +19,7 @@ crossorigin="anonymous"></script>
 <body>
     <div class="container">
         <h1>HOT5</h1>
-        <table class="table">
+        <table class="table text-center">
             <thead>
                 <tr>
                     <th>순위</th>
@@ -27,10 +27,10 @@ crossorigin="anonymous"></script>
                 </tr>
             </thead>
             <tbody>
-                <c:forEach items="${musicRanking}" var="musicRanking" varStatus="status">
+                <c:forEach items="${musicRanking}" var="Ranking" varStatus="status"><%--반복문 공식 --%>
                     <tr>
-                        <td>${status.index + 1}</td>
-                        <td>${musicRanking}</td>
+                        <td>${status.count}</td>
+                        <td>${Ranking}</td>
                     </tr>
                 </c:forEach>
             </tbody>

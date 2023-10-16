@@ -2,18 +2,17 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
- <mapper namespace="com.quiz.lesson04.mapper.RealtorMapper">
- <!--parameterType(되돌려 받을 파라미터 타입(realtor)형태가 객체인 형태  -->
- <insert id="insertRealtor" parameterType="com.quiz.lesson04.domain.Realtor"
- useGeneratedKeys="true" keyProperty="id">
+<mapper namespace="com.quiz.lesson04.mapper.RealtorMapper">
+	<insert id="insertRealtor" parameterType="com.quiz.lesson04.domain.Realtor"
+	useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO `realtor`
 		(
 			`office`
-			, `phoneNumber`
-			, `address`
-			, `grade`
-			, `createdAt`
-			, `updatedAt`
+			,`phoneNumber`
+			,`address`
+			,`grade`
+			,`createdAt`
+			,`updatedAt`
 		)
 		VALUES
 		(
@@ -29,15 +28,16 @@
 	<select id="selectRealtorById" parameterType="int" resultType="com.quiz.lesson04.domain.Realtor">
 		SELECT
 			`id`
-			, `office`
-			, `phoneNumber`
-			, `address`
-			, `grade`
-			, `createdAt`
-			, `updatedAt`
+			,`office`
+			,`phoneNumber`
+			,`address`
+			,`grade`
+			,`createdAt`
+			,`updatedAt`
 		FROM
 			`realtor`
 		WHERE
 			`id` = #{id}
 	</select>
+	
 </mapper>

@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+#wrap {
+	width:1200px;
+}
+nav {
+	background-color:cornflowerblue;
+}
+#no1{
+	background-color: darkturquoise;
+}
+footer {
+	height:100px;
+}

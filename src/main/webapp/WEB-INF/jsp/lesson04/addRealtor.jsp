@@ -15,7 +15,7 @@
 		<form method="post" action="/lesson04/quiz02/add-realtor">
 			<div class="form-group">
 				<label for="office">상호명</label>
-				<input type="text" id="office" name="office" class="from-control col-3">
+				<input tyoe="text" id="office" name="office">
 			</div>
 			<div class="form-group">
 				<label for="phoneNumber">전화번호</label>
