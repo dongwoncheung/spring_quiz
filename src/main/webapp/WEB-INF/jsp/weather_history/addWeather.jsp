@@ -38,7 +38,7 @@
 						<a href="/weather/history-view"	class="nav-link menu-font">날씨</a>
 					</li>
 					<li class="nav-item">
-						<a href="/weather/add-weather-view" class="nav-link menu-font">날씨입력</a>
+						<a href="/weather/add-weather" class="nav-link menu-font">날씨입력</a>
 					</li>
 					<li class="nav-item">
 						<a href="#" class="nav-link menu-font">테마날씨</a>
@@ -138,3 +138,6 @@
 				dateFormat:"yy-mm-dd" // 날짜 포맷
 			});
 		});
+	</script>
+</body>
+</html>

@@ -31,7 +31,13 @@ public class WeatherHistoryController {
 		return "weather_history/history";
 	}
 	
-	// 날씨 추가 화면 -> 추가로 입력을 한뒤 사이트 및 db에 저장을 위한 작업
+	// 날씨 추가 화면 -> 추가적으로 날씨추가 항목을 입력을 해야되는 페이지 생성
+	@GetMapping("/add-weather")
+	public String addWeatherView() {
+		return "weather_history/addWeather";
+	}
+	
+	// 날씨 추가 로직 -> 날씨 추가 db에서 정보를 가지고 와서 저장 및 history화면으로 이동
 	@PostMapping("/add-weather")
 	public String addWeather(
 			//@RequestParam("date") @DateTimeFormat(pattern="yyyy-MM-dd") Date date) {

@@ -1,3 +1,4 @@
+
 package com.quiz.weather_history.bo;
 
 import java.util.List;
@@ -19,7 +20,7 @@ public class WeatherHistoryBO {
 	public List<WeatherHistory> getWeatherHistoryList() {
 		return weatherHistoryMapper.selectWeatherHistoryList();
 	}
-	
+	//input: 과거 날씨형식에 맞는 파라미터 값 output: 결과값
 	public void addWeatherHistory(String date, String weather, String microDust,
 			double temperatures, double precipitation,
 			double windSpeed) {
