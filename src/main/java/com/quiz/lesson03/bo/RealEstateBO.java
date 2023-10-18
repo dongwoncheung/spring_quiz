@@ -10,50 +10,56 @@ import com.quiz.lesson03.mapper.RealEstateMapper;
 
 @Service
 public class RealEstateBO {
-
 	@Autowired
-	private RealEstateMapper realEstateMapper;
-	
-	// input: id(정수)
-	// output: RealEstate
+	private RealEstateMapper realestatemapper;
+	//input: id 20
+	//output:id 20번에 대한 정보
 	public RealEstate getRealEstateById(int id) {
-		return realEstateMapper.selectRealEstateById(id);
+		return realestatemapper.selectRealEstateById(id);
 	}
-	
-	// input: rentPrice
-	// output: List<RealEstate>
-	public List<RealEstate> getRealEstateListByRentPrice(int rentPrice) {
-		//return null;
-		return realEstateMapper.selectRealEstateListByRentPrice(rentPrice);
-	}
-	
-	// input: area, price
-	// output: List<RealEstate>
-	public List<RealEstate> getRealEstateListByAreaPrice(int area, int price) {
-		return realEstateMapper.selectRealEstateListByAreaPrice(area, price);
-	}
-	
-	// input: RealEstate
-	// output: 성공된 행의 개수
-	public int addRealEstate(RealEstate realEstate) {
-		return realEstateMapper.insertRealEstate(realEstate);
-	}
-	
-	public int addRealEstateAsField(
-			int realtorId222, String address, 
-			int area, String type, 
-			int price, Integer rentPrice) {
-		
-		return realEstateMapper.insertRealEstateAsField(realtorId222, address, area, type, price, rentPrice);
-	}
-	
-	// input: id, price, type
-	// output: int 
-	public int updateRealEstateById(int id, int price, String type) {
-		return realEstateMapper.updateRealEstateById(id, price, type);
-	}
-	
-	public int deleteRealEstateById(int id) {
-		return realEstateMapper.deleteRealEstateById(id);
-	}
+//	@Autowired
+//	private RealEstateMapper realEstateMapper;
+//	
+//	// input: id(정수)
+//	// output: RealEstate
+//	public RealEstate getRealEstateById(int id) {
+//		return realEstateMapper.selectRealEstateById(id);
+//	}
+//	
+//	// input: rentPrice
+//	// output: List<RealEstate>
+//	public List<RealEstate> getRealEstateListByRentPrice(int rentPrice) {
+//		//return null;
+//		return realEstateMapper.selectRealEstateListByRentPrice(rentPrice);
+//	}
+//	
+//	// input: area, price
+//	// output: List<RealEstate>
+//	public List<RealEstate> getRealEstateListByAreaPrice(int area, int price) {
+//		return realEstateMapper.selectRealEstateListByAreaPrice(area, price);
+//	}
+//	
+//	// input: RealEstate
+//	// output: 성공된 행의 개수
+//	public int addRealEstate(RealEstate realEstate) {
+//		return realEstateMapper.insertRealEstate(realEstate);
+//	}
+//	
+//	public int addRealEstateAsField(
+//			int realtorId222, String address, 
+//			int area, String type, 
+//			int price, Integer rentPrice) {
+//		
+//		return realEstateMapper.insertRealEstateAsField(realtorId222, address, area, type, price, rentPrice);
+//	}
+//	
+//	// input: id, price, type
+//	// output: int 
+//	public int updateRealEstateById(int id, int price, String type) {
+//		return realEstateMapper.updateRealEstateById(id, price, type);
+//	}
+//	
+//	public int deleteRealEstateById(int id) {
+//		return realEstateMapper.deleteRealEstateById(id);
+//	}
 }
