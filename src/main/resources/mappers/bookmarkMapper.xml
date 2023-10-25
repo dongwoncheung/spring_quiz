@@ -1,11 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
- <!-- NAMESPACE는 인터페이스인 MAPPER의 이름이랑 같은 주소로 가기 -->
- <mapper namespace="com.quiz.lesson06.mapper.BookmarkMapper">
- 	<select id="selectBookmarkList" resultType="com.quiz.lesson06.domain.Bookmark">
- 		SELECT
- 			`id`
+ 
+<mapper namespace="com.quiz.lesson06.mapper.BookmarkMapper">
+	<select id="selectBookmarkList" resultType="com.quiz.lesson06.domain.Bookmark">
+		SELECT
+			`id`
+			,`name`
+			,`url`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`url`
+	</select>
+	
+		<insert id="insertBookmark" parameterType="map">
+		INSERT INTO 
+				`url`
+   				(
+    				`name`
+    				,`url`
+    				,`createdAt`
+    				,`updatedAt`
+  				 )
+   				VALUES
+   				(
+    				#{name}
+    				, #{url}
+    				, NOW()
+    				, NOW()
+   				)
+	</insert>
+
+	
+	<select id="selectBookmarkByUrl" parameterType="string" 
+	resultType="com.quiz.lesson06.domain.Bookmark">
+		SELECT
+			`id`
 			,`name`
 			,`url`
 			,`createdAt`
@@ -13,6 +44,14 @@
 		FROM
 			`url`
 		WHERE
+			`url` = #{url}
+	</select>
+	
+	<delete id="deleteBookmarkById" parameterType="int">
+		DELETE
+		FROM
+			`url`
+		WHERE
 			`id` = #{id}
- 	</select>
- </mapper>
+	</delete>
+</mapper>

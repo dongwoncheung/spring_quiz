@@ -22,6 +22,7 @@
 					<th>No.</th>
 					<th>이름</th>
 					<th>주소</th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -29,11 +30,60 @@
 				<tr>
 					<td>${bookmark.id}</td>
 					<td>${bookmark.name}</td>
-					<td><a href="${bookmark.url}" target="_blank">${bookmark.url}</a></td>
+					<!-- target="_blank => 새탭으로 사이트를 들어가게 해주는 문법 -->
+					<td><a href="${bookmark.url}" target="_blank">${bookmark.url}</a></td><!--  선택시 원하는 주소로 이동 -->
+					<td>
+						<%-- 1) value 속성을 이용해서 값 세팅 --%>
+						<%-- <button type="button" class="del-btn btn btn-danger" value="${bookmark.id}">삭제</button> --%>
+						
+						<%-- 2) data를 이용해서 태그에 값 세팅: 대문자 X --%>
+						<button type="button" class="del-btn btn btn-danger" data-bookmark-id="${bookmark.id}">삭제</button>
+					</td>
 				</tr>
 			</c:forEach>
 			</tbody>
 		</table>
 	</div>
+	
+<script>
+ $(document).ready(function() {
+	// 삭제 버튼 클릭
+	$(".del-btn").on('click', function(e) {
+		//alert("삭제");
+		
+		//---- value---
+		// 1)
+		//let id = $(this).val();
+	
+		// 2)
+		// let id = e.target.value;
+		
+		//---- data---
+		// data-bookmark-id    => data("bookmark-id") 함수 사용
+		let id = $(this).data('bookmark-id');
+		//alert(id);
+		
+		$.ajax({
+			// request
+			type:"DELETE"
+			, url:"/lesson06/quiz02/delete-bookmark"
+			, data:{"id":id}
+			
+			// response
+			, success:function(data) {
+				// if (data.result == "성공") {
+				if (data.code == 200) {
+					location.reload(true); // 새로고침
+				} else {
+					alert("삭제를 하는데 실패했습니다. 다시 시도해주세요.");
+				}
+			}
+			, error:function(request, status, error) {
+				alert("삭제를 하는데 실패했습니다. 관리자에게 문의해주세요.");
+			}
+		});
+	});
+}); 
+</script>
 </body>
 </html>

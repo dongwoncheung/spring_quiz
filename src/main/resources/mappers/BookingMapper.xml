@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.quiz.booking.mapper.BookingMapper">
+ 	<select id="selectBookingList" resultType="com.quiz.booking.domain.Booking">
+ 		SELECT
+ 			`id`
+			,`name`
+			,`headcount`
+			,`day`
+			,`date`
+			,`phoneNumber`
+			,`state`
+			,`createdAt`
+			,`updatedAt`
+ 		FROM
+ 			`booking` <!-- 모조리 다 가져오는 거니까 where은쓸 이유가 없다 -->
+ 	</select>
+ 	<delete id="deleteBookingById" parameterType="int">
+ 		DELETE
+ 		FROM
+ 			`booking`
+ 		WHERE
+ 			`id` = #{id}
+ 	</delete>
+ 	<insert id="insertBooking" parameterType="map">
+ 		INSERT INTO`booking`
+ 		(
+ 			`name`
+			,`headcount`
+			,`day`
+			,`date`
+			,`phoneNumber`
+			,`state`
+			,`createdAt`
+			,`updatedAt`
+ 		)
+ 		VALUES
+ 		(
+ 			#{name}
+ 			,#{headcount}
+ 			,#{day}
+ 			,#{date}
+ 			,#{phoneNumber}
+ 			,'대기중'
+ 			,NOW()
+ 			,NOW()
+ 			<!-- state:아직 예약확정이 된지아닌지 모르지 -->
+ 		)
+ 	</insert>
+ 	<select id="selectBookingByNamePhoneNumber" parameterType="map" resultType="com.quiz.booking.domain.Booking">
+ 		SELECT
+ 			`id`
+			,`name`
+			,`headcount`
+			,`day`
+			,`date`
+			,`phoneNumber`
+			,`state`
+			,`createdAt`
+			,`updatedAt`
+ 		FROM
+ 			`booking`
+ 		WHERE
+ 			`name` = #{name}
+ 			AND `phoneNumber` = #{phoneNumber}
+ 	</select>
+ </mapper>

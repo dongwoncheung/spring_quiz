@@ -9,7 +9,6 @@ public class Bookmark {
 	private Date createdAt;
 	private Date updatedAt;
 	
-	
 	public int getId() {
 		return id;
 	}
@@ -40,6 +39,4 @@ public class Bookmark {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-	
-	
 }
